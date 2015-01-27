@@ -1,6 +1,6 @@
 " File: dubs_file_finder.vim
 " Author: Landon Bouma (dubsacks &#x40; retrosoft &#x2E; com)
-" Last Modified: 2015.01.26
+" Last Modified: 2015.01.27
 " Project Page: https://github.com/landonb/dubs_file_finder
 " Summary: Just a Command-T wrapper
 " License: GPLv3
@@ -156,7 +156,10 @@ let g:CommandTAlwaysShowDotFiles = 1
 "  :help ctrlp-options
 
 " Enable CtrlP.
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" 2015.01.27: Other code expects first entry of &rtp to be
+"             ~/.vim, so use += to append and not ^= to prepend.
+"set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath+=~/.vim/bundle/ctrlp.vim
 
 " Some other options...
 "  let g:ctrlp_working_path_mode = 'ra'
