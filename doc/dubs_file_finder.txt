@@ -1,0 +1,89 @@
+*dubs_file_finder.txt*	For Vim version 7.4.	Last change: 2015 Jan 23
+
+Just a Command-T Wrapper~
+
+COMMAND--ALL-THE-SOURCES--T				*dubs-file-finder*
+
+1. About This Plugin			|dubs-filfndr-about|
+2. File Finder Overview			|dubs-filfndr-overview|
+3. Different Ways to Find Files 	|dubs-filfndr-etc|
+
+==============================================================================
+1. About This Plugin					*dubs-filfndr-about*
+
+This script wraps Command-T so it's available
+from <Ctrl-D> and so you can invoke Command-T
+without needing to supply any directory paths.
+
+Project page: https://github.com/landonb/dubs_file_finder
+
+Command-T: https://github.com/wincent/Command-T
+
+==============================================================================
+2. File Finder Overview					*dubs-filfndr-overview*
+
+				*<Ctrl-D>* *<C-d>*
+<Ctrl-D>		Run `:Command-T` on the `cmdt_paths` directory,
+			which contains symlinks to one or more projects
+			whose file hierarchies you can fuzzily search
+                        to locate and open files.
+
+The short of it~
+
+1. Find the `cmdt_paths` directory in your Vim folder.
+| It'll be under `dubs_file_finder`.
+
+2. Populate the directory with symlinks.
+
+3. Press `<Ctrl-D>`.
+
+The long of it~
+
+This script doesn't require you to enter a
+target directory when invoking the file finder.
+It'll search all the projects linked to from a
+special folder.
+
+- The plugin will automatically create the `cmdt_paths`
+  directory for you. Check under this project's directory,
+  `dubs_file_finder`.
+
+In this manner, it's just one key-combo to invoke Command-T,
+and you don't have to specify the directory to scan. You might
+be concerned that listing all projects' files together will make
+it harder to find the file you want, but Command-T is such a great
+tool that even with thousands of source files, it's still a cinch to
+find and open files.
+
+You can instead access Command-T directly using
+`:CommandT` `{some_dir}`.
+
+Compare to `CtrlP` <https://github.com/kien/ctrlp.vim>
+and `NERDTree` <https://github.com/scrooloose/nerdtree>,
+two other plugins that help you find files.
+
+==============================================================================
+2. Different Ways to Find Files				*dubs-filfndr-etc*
+
+<Ctrl-D>		Calls Command-T to Fuzzy-find by filename.
+			Searches projects symlinked from
+			'dubs_file_finder/cmdt_paths'.
+
+<Shift-Alt-4>		Toggle Project tray.
+			Use \c command in project tray to
+			add projects to '.vimprojects'
+			Requires |dubs-project-tray|.
+
+:CtrlP {somedir}	Use CtrlP to find files.
+
+:NERDTreeToggle		Toggle NERD Tree tray.
+
+:Explore		Vim command similar to NERD Tree.
+
+:tabedit, etc.		Vim built-in open-file commands....
+			See `:help` for such commands as `:edit`,
+			`:new`, `:tabedit`, and `:tabnew`.
+
+
+ vim:tw=78:ts=8:ft=help:norl:
+
