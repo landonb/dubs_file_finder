@@ -19,6 +19,21 @@ Project page: https://github.com/landonb/dubs_file_finder
 
 Command-T: https://github.com/wincent/Command-T
 
+Install Command-T~
+`-----------------`
+
+From the terminal:
+
+   mkdir -p ~/.vim/bundle/
+   cd ~/.vim/bundle/
+   git clone https://github.com/wincent/command-t.git
+   # Or add as a submodule if ~/.vim under revision control, e.g.:
+   #   git submodule add https://github.com/wincent/command-t.git
+   cd ~/.vim/bundle/command-t/ruby/command-t
+   sudo apt-get install -y ruby-dev
+   ruby extconf.rb
+   make
+
 ==============================================================================
 2. File Finder Overview					*dubs-filfndr-overview*
 

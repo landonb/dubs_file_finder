@@ -12,7 +12,46 @@ so it's available from ``<Ctrl-D>`` and so you can
 invoke Command-T without needing to supply any
 directory paths.
 
-Project page: https://github.com/landonb/dubs_file_finder
+Installation
+------------
+
+Standard Pathogen installation:
+
+.. code-block:: bash
+
+   cd ~/.vim/bundle/
+   git clone https://github.com/landonb/dubs_file_finder.git
+
+Or, Standard submodule installation:
+
+.. code-block:: bash
+
+   cd ~/.vim/bundle/
+   git submodule add https://github.com/landonb/dubs_file_finder.git
+
+Online help:
+
+.. code-block:: vim
+
+   :Helptags
+   :help dubs-file-finder
+
+Install Command-T
+^^^^^^^^^^^^^^^^^
+
+After installing the Command-T plugin, you'll have to build it.
+
+.. code-block:: bash
+
+   cd ~/.vim/bundle/
+   git clone https://github.com/wincent/command-t.git
+   # Or add as a submodule if ~/.vim under revision control, e.g.:
+   #   git submodule add https://github.com/wincent/command-t.git
+
+   cd ~/.vim/bundle/command-t/ruby/command-t
+   sudo apt-get install -y ruby-dev
+   ruby extconf.rb
+   make
 
 File Finder Commands
 --------------------
