@@ -1,11 +1,11 @@
 " File: dubs_file_finder.vim
-" Author: Landon Bouma (dubsacks &#x40; retrosoft &#x2E; com)
+" Author: Landon Bouma (landonb &#x40; retrosoft &#x2E; com)
 " Last Modified: 2015.01.27
 " Project Page: https://github.com/landonb/dubs_file_finder
 " Summary: Just a Command-T wrapper
 " License: GPLv3
 " -------------------------------------------------------------------
-" Copyright © 2009-2015, 2015 Landon Bouma.
+" Copyright © 2009, 2015 Landon Bouma.
 " 
 " This file is part of Dubsacks.
 " 
