@@ -1,11 +1,11 @@
 " File: dubs_file_finder.vim
 " Author: Landon Bouma (landonb &#x40; retrosoft &#x2E; com)
-" Last Modified: 2015.01.27
+" Last Modified: 2016.03.24
 " Project Page: https://github.com/landonb/dubs_file_finder
 " Summary: Just a Command-T wrapper
 " License: GPLv3
 " -------------------------------------------------------------------
-" Copyright © 2009, 2015 Landon Bouma.
+" Copyright © 2009, 2015-2016 Landon Bouma.
 " 
 " This file is part of Dubsacks.
 " 
@@ -246,8 +246,11 @@ else
     " See if dubs_all is there.
     let s:dubcor = fnamemodify(
       \ finddir('dubs_all', pathogen#split(&rtp)[0] . "/**"), ":p")
-    " Get the filename root, i.e., drop the ".template".
-    let s:ffdir = fnamemodify(s:tmplate, ":r")
+    " Get the filename root, i.e., drop the ".template",
+    " but first remove the trailing slash.
+    let s:sepr = pathogen#slash()
+    let s:ffdir = substitute(s:tmplate, s:sepr.'$', '', 'g')
+    let s:ffdir = fnamemodify(s:ffdir, ":r")
     " Make a copy of the template.
     silent execute '!/bin/cp -ra ' . s:tmplate . ' ' . s:ffdir
     if isdirectory(s:dubcor)
