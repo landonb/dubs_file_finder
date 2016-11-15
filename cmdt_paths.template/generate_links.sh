@@ -8,8 +8,12 @@ find . -maxdepth 1 -type l -exec /bin/rm {} +
 # for fname in ~/.bash*; do
 #   /bin/ln -sf $fname dubs-$(basename $fname | cut -c 2-)
 # done
-/bin/ln -sf $HOME/.vim home-vim
-/bin/ln -sf $HOME/.vimrc home-vimrc
+if [[ -d $HOME/.vim ]]; then
+  /bin/ln -sf $HOME/.vim home-vim
+fi
+if [[ -f $HOME/.vimrc ]]; then
+  /bin/ln -sf $HOME/.vimrc home-vimrc
+fi
 
 # Add more links here. E.g., maybe you have somelike like
 #  /bin/ln -sf /srv/client_1 work-client-1
