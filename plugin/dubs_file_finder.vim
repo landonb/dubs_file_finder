@@ -1,11 +1,11 @@
 " File: dubs_file_finder.vim
 " Author: Landon Bouma (landonb &#x40; retrosoft &#x2E; com)
-" Last Modified: 2016.03.24
+" Last Modified: 2017.02.25
 " Project Page: https://github.com/landonb/dubs_file_finder
 " Summary: Just a Command-T wrapper
 " License: GPLv3
 " -------------------------------------------------------------------
-" Copyright © 2009, 2015-2016 Landon Bouma.
+" Copyright © 2009, 2015-2017 Landon Bouma.
 " 
 " This file is part of Dubsacks.
 " 
@@ -122,6 +122,21 @@ let g:CommandTTraverseSCM = "file"
 
 " Always include dot-files, otherwise they're only included if you dot.
 let g:CommandTAlwaysShowDotFiles = 1
+
+" 2017-02-25: Here's a new (to me) one:
+"
+"   Warning: maximum file limit reached
+"
+"   Increase it by setting a higher value in $MYVIMRC; eg:
+"     let g:CommandTMaxFiles=200000
+"   Or suppress this warning by setting:
+"     let g:CommandTSuppressMaxFilesWarning=1
+"   For best performance, consider using a fast scanner; see:
+"     :help g:CommandTFileScanner
+"let g:CommandTSuppressMaxFilesWarning=1
+let g:CommandTMaxFiles=1000000
+"let g:CommandTFileScanner = "git"
+let g:CommandTFileScanner = "find"
 
 " CtrlP
 " ^^^^^
