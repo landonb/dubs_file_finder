@@ -6,7 +6,7 @@
 find . -maxdepth 1 -type l -exec /bin/rm {} +
 
 # for fname in ~/.bash*; do
-#   /bin/ln -sf $fname dubs-$(basename $fname | cut -c 2-)
+#   /bin/ln -sf $fname dubs-$(basename -- "${fname}") | cut -c 2-)
 # done
 if [[ -d $HOME/.vim ]]; then
   /bin/ln -sf $HOME/.vim home-vim
