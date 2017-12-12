@@ -1,6 +1,6 @@
 " File: dubs_file_finder.vim
 " Author: Landon Bouma (landonb &#x40; retrosoft &#x2E; com)
-" Last Modified: 2017.02.25
+" Last Modified: 2017.12.12
 " Project Page: https://github.com/landonb/dubs_file_finder
 " Summary: Just a Command-T wrapper
 " License: GPLv3
@@ -135,8 +135,9 @@ let g:CommandTAlwaysShowDotFiles = 1
 "     :help g:CommandTFileScanner
 "let g:CommandTSuppressMaxFilesWarning=1
 let g:CommandTMaxFiles=1000000
-"let g:CommandTFileScanner = "git"
-let g:CommandTFileScanner = "find"
+" 2017-12-12: We should try git, which runs `ls-files` and falls back to `find`.
+let g:CommandTFileScanner = "git"
+"let g:CommandTFileScanner = "find"
 
 " CtrlP
 " ^^^^^
