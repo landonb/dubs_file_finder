@@ -115,7 +115,7 @@ Finding and Opening Files (Other Methods)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In addition to using the methods described above to find and open
-files or using the Project plugin, there are obviously other 
+files or using the Project plugin, there are obviously other
 methods of finding and opening files, including:
 
 ===========================  ============================  ==============================================================================
