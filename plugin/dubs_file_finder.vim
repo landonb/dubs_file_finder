@@ -302,11 +302,15 @@ if s:ffdir != ''
   "   Operator-pending
   "   Insert
   "   Command-line.
-  execute "nnoremap <C-D>       :DubsFileFindrWarnTell " . s:ffdir . "<CR>"
-  execute "vnoremap <C-D> :<C-U>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
-  execute "onoremap <C-D>  <C-C>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
-  execute "inoremap <C-D>  <C-O>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
-  execute "cnoremap <C-D>  <C-C>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
+  " 2018-05-07: (lb): WRONG WRONG WRONG: Do not hide Vim's Ctrl-D, which unindents.
+  " Instead, just rely on <Leader>d, which CommandT already maps for us.
+  " NOTE: <C-S-D> doesn't work! But <Leader>D is different than <Leader>d!!
+  "execute "nnoremap <C-D>       :DubsFileFindrWarnTell " . s:ffdir . "<CR>"
+  "execute "vnoremap <C-D> :<C-U>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
+  "execute "onoremap <C-D>  <C-C>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
+  "execute "inoremap <C-D>  <C-O>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
+  "execute "cnoremap <C-D>  <C-C>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
+  execute "map <silent> <leader>d :DubsFileFindrWarnTell " . s:ffdir . "<CR>"
   " Warn-Tell the user if they've got multiple file finder directories.
 
   " FIXME
