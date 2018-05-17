@@ -291,7 +291,7 @@ endif
 command -nargs=? -complete=dir DubsFileFindrWarnTell
   \ call DubsFileFindrWarnTellDo(<q-args>)
 function DubsFileFindrWarnTellDo(path)
-  echomsg 'Notice: path: ' . a:path . ' / s:ffdir ' . s:ffdir
+  "echomsg 'Notice: path: ' . a:path . ' / s:ffdir ' . s:ffdir
   if g:dubs_file_finder_alert_pending == 1
     "echomsg 'Notice: To use <Ctrl-D>, add symlinks to ' . s:ffdir
     call confirm('Notice: To use <Ctrl-D>, add symlinks to ' . s:ffdir)
@@ -316,7 +316,13 @@ if s:ffdir != ''
   "execute "onoremap <C-D>  <C-C>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
   "execute "inoremap <C-D>  <C-O>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
   "execute "cnoremap <C-D>  <C-C>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
-  execute "map <silent> <leader>d :DubsFileFindrWarnTell " . s:ffdir . "<CR>"
+
+  " 2018-05-17: (lb): I keep running <leader>t, which takes a while to load,
+  " and isn't the cmdt_paths/ directory (not sure what the default dir is).
+  " So just remap Command T's <leader>t.
+  "execute "map <silent> <leader>d :DubsFileFindrWarnTell " . s:ffdir . "<CR>"
+  execute "map <silent> <leader>t :DubsFileFindrWarnTell " . s:ffdir . "<CR>"
+
   " Warn-Tell the user if they've got multiple file finder directories.
 
   " FIXME
