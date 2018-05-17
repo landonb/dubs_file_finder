@@ -8,7 +8,7 @@ About This Plugin
 
 This script wraps
 `Command-T <https://github.com/wincent/Command-T>`__
-so it's available from ``<Ctrl-D>`` and so you can
+so it's available from ``<Leader>t`` and so you can
 invoke Command-T without needing to supply any
 directory paths.
 
