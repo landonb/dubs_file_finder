@@ -1,11 +1,10 @@
 " File: dubs_file_finder.vim
 " Author: Landon Bouma (landonb &#x40; retrosoft &#x2E; com)
-" Last Modified: 2017.12.12
 " Project Page: https://github.com/landonb/dubs_file_finder
 " Summary: Just a Command-T wrapper
 " License: GPLv3
 " -------------------------------------------------------------------
-" Copyright © 2009, 2015-2017 Landon Bouma.
+" Copyright © 2009, 2015-2018 Landon Bouma.
 " 
 " This file is part of Dubsacks.
 " 
@@ -136,8 +135,15 @@ let g:CommandTAlwaysShowDotFiles = 1
 "let g:CommandTSuppressMaxFilesWarning=1
 let g:CommandTMaxFiles=1000000
 " 2017-12-12: We should try git, which runs `ls-files` and falls back to `find`.
-let g:CommandTFileScanner = "git"
-"let g:CommandTFileScanner = "find"
+" 2018-05-17: Took me long enough! "git" isn't working. Not quite sure why.
+"   Well, it seems to work on some symlinks under cmdt_paths/, but not all.
+"   Whatever. I don't care too much. Command-T takes a few seconds to load the
+"   first time it's run, and I thought maybe git's ls-files would help it run
+"   faster; and now I still don't know (well, the "git" option loads Command-T
+"   a lot faster than the "find" option, but obviously it's not finding all the
+"   same files).
+"let g:CommandTFileScanner = "git"
+let g:CommandTFileScanner = "find"
 
 " CtrlP
 " ^^^^^
