@@ -1,5 +1,5 @@
-Dubsacks Vim — File Finder
-==========================
+Dubs Vim — File Finder
+======================
 
 **Or, Just a Command-T Wrapper**
 
@@ -126,7 +126,7 @@ methods of finding and opening files, including:
                                                             (so you don't have to prime it, e.g., edit ``.vimprojects``, to use it).
                                                             It's a nice plugin, but if you use the Command-T or the Project tray,
                                                             you probably won't ever use NERDTree.
-                                                            Dubsacks includes this plugin.
+                                                            Dubs Vim includes this plugin.
 ---------------------------  ----------------------------  ------------------------------------------------------------------------------
  ``:Explore``                 Vim command similar           See ``:help explore``.
                               to NERD Tree

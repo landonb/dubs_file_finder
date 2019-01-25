@@ -1,6 +1,6 @@
-====================================================================
-This directory is part of Dubsacks.
-====================================================================
+##################################
+This directory is part of Dubs Vim
+##################################
 
 Use this directory to store a bunch of symlinks to all the projects
 on which you work, and then you can use one Command-T command to

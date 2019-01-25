@@ -6,20 +6,20 @@
 " -------------------------------------------------------------------
 " Copyright © 2009, 2015-2018 Landon Bouma.
 " 
-" This file is part of Dubsacks.
+" This file is part of Dubs Vim.
 " 
-" Dubsacks is free software: you can redistribute it and/or
+" Dubs Vim is free software: you can redistribute it and/or
 " modify it under the terms of the GNU General Public License
 " as published by the Free Software Foundation, either version
 " 3 of the License, or (at your option) any later version.
 " 
-" Dubsacks is distributed in the hope that it will be useful,
+" Dubs Vim is distributed in the hope that it will be useful,
 " but WITHOUT ANY WARRANTY; without even the implied warranty
 " of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
 " the GNU General Public License for more details.
 " 
 " You should have received a copy of the GNU General Public License
-" along with Dubsacks. If not, see <http://www.gnu.org/licenses/>
+" along with Dubs Vim. If not, see <http://www.gnu.org/licenses/>
 " or write Free Software Foundation, Inc., 51 Franklin Street,
 "                     Fifth Floor, Boston, MA 02110-1301, USA.
 " ===================================================================
@@ -237,7 +237,7 @@ set runtimepath+=~/.vim/bundle/ctrlp.vim
 "                     EXPLAIN: Where is Ctrl-E mapped or documented?
 "                   Ctrl-Y makes my screen blip.
 "
-"   If you've installed Dubsacks Vim,
+"   If you've installed Dubs Vim,
 "                   You can scroll the window by one line with <Ctrl-Up/Down>,
 "                   and you can page up and down with <PageUp> and <PageDown>.
 "
@@ -284,7 +284,7 @@ else
     " the user -- they haven't done anything yet.
     let g:dubs_file_finder_alert_pending = 1
   else
-    echomsg 'Warning: Dubsacks could not find dubs_projects.vim.template'
+    echomsg 'Warning: Dubs Vim could not find dubs_projects.vim.template'
   endif
 endif
 
