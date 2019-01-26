@@ -1,10 +1,13 @@
-Dubs Vim — File Finder
-======================
+##############################
+Dubs Vim |em_dash| File Finder
+##############################
+
+.. |em_dash| unicode:: 0x2014 .. em dash
 
 **Or, Just a Command-T Wrapper**
 
 About This Plugin
------------------
+=================
 
 This script wraps
 `Command-T <https://github.com/wincent/Command-T>`__
@@ -13,7 +16,7 @@ invoke Command-T without needing to supply any
 directory paths.
 
 Installation
-------------
+============
 
 Standard Pathogen installation:
 
@@ -37,7 +40,7 @@ Online help:
    :help dubs-file-finder
 
 Install Command-T
-^^^^^^^^^^^^^^^^^
+-----------------
 
 After installing the Command-T plugin, you'll have to build it.
 
@@ -54,7 +57,7 @@ After installing the Command-T plugin, you'll have to build it.
    make
 
 File Finder Commands
---------------------
+====================
 
 The short of it:
 
@@ -91,10 +94,10 @@ and `NERDTree <https://github.com/scrooloose/nerdtree>`__,
 two other plugins that help you find files.
 
 Key Mappings
-------------
+============
 
 Finding and Opening Files (Trendy Methods)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------------
 
 ===========================  ============================  ==============================================================================
  Key Mapping                  Description                   Notes
@@ -112,7 +115,7 @@ Finding and Opening Files (Trendy Methods)
 ===========================  ============================  ==============================================================================
 
 Finding and Opening Files (Other Methods)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------------
 
 In addition to using the methods described above to find and open
 files or using the Project plugin, there are obviously other
