@@ -335,3 +335,31 @@ else
   call confirm('Warning: Did not find a cmdt_paths directory.', 'OK')
 endif
 
+" ------------------------------------------
+
+function! s:SetCtrlPUserCommandRg()
+  let g:ctrlp_user_command = 'rg %s --files-with-matches --color=never'
+endfunction
+
+function! s:SetCtrlPUserCommandAg()
+  " -l --files-with-matches Only print the names of files containing
+  "                         matches, not the matching lines....
+  " -g PATTERN              Print filenames matching PATTERN.
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endfunction
+
+function! s:SetCtrlPUserCommand()
+  " Speed up fuzzy file finding -- and respect .ignore and .gitignore rules!
+  if executable("rg")
+    call s:SetCtrlPUserCommandRg()
+  elseif executable("ag")
+    call s:SetCtrlPUserCommandAg()
+  " else, nothing special, probably falls back to grep or find.
+  endif
+endfunction
+
+" FIXME/2018-05-06: (lb): Should probably function-ize everything
+" and make a main().
+" FIXME/2020-02-04: (lb): And move most code under autoload/.
+call s:SetCtrlPUserCommand()
+
