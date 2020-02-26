@@ -24,12 +24,10 @@ Install Command-T~
 
 From the terminal:
 
-   mkdir -p ~/.vim/bundle/
-   cd ~/.vim/bundle/
+   mkdir -p ~/.vim/pack/wincent/start
+   cd ~/.vim/pack/wincent/start
    git clone https://github.com/wincent/command-t.git
-   # Or add as a submodule if ~/.vim under revision control, e.g.:
-   #   git submodule add https://github.com/wincent/command-t.git
-   cd ~/.vim/bundle/command-t/ruby/command-t
+   cd ~/.vim/pack/wincent/start/command-t/ruby/command-t
    sudo apt-get install -y ruby-dev
    ruby extconf.rb
    make

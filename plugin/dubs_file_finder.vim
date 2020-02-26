@@ -79,26 +79,18 @@ let g:plugin_dubs_file_finder = 1
 
 " https://github.com/wincent/Command-T
 "
-" If you manage your entire `~/.vim` folder using Git then you can
-" add the Command-T repository as a submodule:
+"  mkdir -p ~/.vim/pack/wincent/start
+"  cd ~/.vim/pack/wincent/start
+"  git clone https://github.com/wincent/command-t.git
 "
-"  cd ~/.vim/bundle
-"  git submodule add https://github.com/wincent/command-t.git
-"  git submodule init
+" Create help tags:
 "
-" Update with:
-"
-"  cd ~/.vim/bundle/command-t
-"  git pull
-"
-" Create Pathogen help tags:
-"
-"  :call pathogen#helptags()
+"  :Helptags
 "
 " Compile:
 "
 "  sudo apt-get install ruby-dev
-"  cd ~/.vim/bundle/command-t/ruby/command-t
+"  cd ~/.vim/pack/wincent/start/command-t/ruby/command-t
 "  ruby extconf.rb
 "  make
 "
@@ -155,13 +147,13 @@ let g:CommandTFileScanner = "find"
 "
 " Checkout the source as a git submodule:
 "
-"  cd ~/.vim
-"  git submodule add https://github.com/kien/ctrlp.vim.git bundle/ctrlp.vim
-"  git submodule init
+"  mkdir -p ~/.vim/pack/kien/start
+"  cd ~/.vim/pack/kien/start
+"  git clone https://github.com/kien/ctrlp.vim.git
 "
 " Create help docs:
 "
-" :helptags ~/.vim/bundle/ctrlp.vim/doc
+" :helptags ~/.vim/pack/kien/start/ctrlp.vim/doc
 "
 " Restart Vim.
 "
@@ -180,8 +172,7 @@ let g:CommandTFileScanner = "find"
 " Enable CtrlP.
 " 2015.01.27: Other code expects first entry of &rtp to be
 "             ~/.vim, so use += to append and not ^= to prepend.
-"set runtimepath^=~/.vim/bundle/ctrlp.vim
-set runtimepath+=~/.vim/bundle/ctrlp.vim
+set runtimepath+=~/.vim/pack/kien/start/ctrlp.vim
 
 " Some other options...
 "  let g:ctrlp_working_path_mode = 'ra'
@@ -265,9 +256,6 @@ else
                           \ pathogen#split(&rtp)[0] . "/**")
   if s:tmplate != ''
     let s:tmplate = fnamemodify(s:tmplate, ":p")
-    " See if dubs_all is there.
-    let s:dubcor = fnamemodify(
-      \ finddir('dubs_all', pathogen#split(&rtp)[0] . "/**"), ":p")
     " Get the filename root, i.e., drop the ".template",
     " but first remove the trailing slash.
     let s:sepr = pathogen#slash()
@@ -275,11 +263,6 @@ else
     let s:ffdir = fnamemodify(s:ffdir, ":r")
     " Make a copy of the template.
     silent execute '!/bin/cp -ra ' . s:tmplate . ' ' . s:ffdir
-    if isdirectory(s:dubcor)
-      " Note that Vim returns the trailing slash...
-      let s:lndir = s:dubcor . fnamemodify(s:tmplate, ":h:t:r")
-      silent execute '!/bin/ln -s ' . s:ffdir . ' ' . s:lndir
-    endif
     " We're initially called on startup when it's a bad idea to alert
     " the user -- they haven't done anything yet.
     let g:dubs_file_finder_alert_pending = 1
