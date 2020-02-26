@@ -1,3 +1,5 @@
 doc/tags
+
+# Symlink to user's private cmdt_paths/ symlinks directory.
 cmdt_paths
 
