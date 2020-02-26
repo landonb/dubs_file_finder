@@ -284,7 +284,7 @@ else
     " the user -- they haven't done anything yet.
     let g:dubs_file_finder_alert_pending = 1
   else
-    echomsg 'Warning: Dubs Vim could not find dubs_projects.vim.template'
+    echomsg 'Warning: Dubs Vim could not find cmdt_paths.template'
   endif
 endif
 
