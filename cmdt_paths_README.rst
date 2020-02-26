@@ -1,1 +1,0 @@
-cmdt_paths/README.rst
