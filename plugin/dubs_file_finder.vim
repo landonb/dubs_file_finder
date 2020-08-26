@@ -262,7 +262,14 @@ else
     let s:ffdir = substitute(s:tmplate, s:sepr.'$', '', 'g')
     let s:ffdir = fnamemodify(s:ffdir, ":r")
     " Make a copy of the template.
-    silent execute '!/bin/cp -ra ' . s:tmplate . ' ' . s:ffdir
+    if has('macunix')
+      " Default macOS BSD cp's -a same as -pPR, and -r and -R mutually exclusive.
+      " - On linux (has('unix')?), GNU -a same as -dR.
+      silent execute '!/bin/cp -a ' . s:tmplate . ' ' . s:ffdir
+    else
+      " Linux/GNU cp.
+      silent execute '!/bin/cp -ra ' . s:tmplate . ' ' . s:ffdir
+    endif
     " We're initially called on startup when it's a bad idea to alert
     " the user -- they haven't done anything yet.
     let g:dubs_file_finder_alert_pending = 1
