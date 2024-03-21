@@ -3,7 +3,7 @@
 # This command makes links to important files and dirs in your home dir.
 
 # Remove existing links, lest you add links to the linked directories.
-find . -maxdepth 1 -type l -exec /bin/rm {} +
+find . -maxdepth 1 -type l -exec rm {} +
 
 # for fname in ~/.bash*; do
 #   /bin/ln -sf $fname dubs-$(basename -- "${fname}") | cut -c 2-)
