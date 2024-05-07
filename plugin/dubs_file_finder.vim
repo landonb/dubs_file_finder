@@ -106,6 +106,10 @@ let g:plugin_dubs_file_finder = 1
 "        Check the docs for more options.
 "         https://github.com/wincent/Command-T
 
+" CommandT v6 is NeoVim-only Lua rewrite.
+" - Opt-in to previous Ruby implementation.
+let g:CommandTPreferredImplementation='ruby'
+
 " Walk up directory from file's base and look for .git, etc,
 " when starting Command-T using the current file's location.
 "  See: g:CommandTSCMDirectories ('.git,.hg,.svn,.bzr,_darcs')
@@ -287,6 +291,11 @@ function DubsFileFindrWarnTellDo(path)
     call confirm('Notice: To use <Ctrl-D>, add symlinks to ' . s:ffdir)
     let g:dubs_file_finder_alert_pending = 0
   endif
+  " LATER: Latest wincent/command-t v6 Lua rewrite's CommandT does
+  " not accept path arg. Might try this instead if this plugin
+  " upgraded to NeoVim/Lua plug:
+  "   lcd a:path
+  "   call CommandT
   execute ':CommandT ' . a:path
 endfunction
 
