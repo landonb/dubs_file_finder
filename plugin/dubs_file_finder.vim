@@ -117,6 +117,9 @@ let g:CommandTTraverseSCM = "file"
 
 " Always include dot-files, otherwise they're only included if you dot.
 let g:CommandTAlwaysShowDotFiles = 1
+" Similary always scan dot directories (which are excluded regardless
+" of you typing a complete dot-prefixed directory name).
+let g:CommandTScanDotDirectories = 1
 
 " 2017-02-25: Here's a new (to me) one:
 "
