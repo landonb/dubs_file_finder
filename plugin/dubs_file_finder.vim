@@ -148,41 +148,53 @@ let g:CommandTMaxFiles=1000000
 "   well on Linux and macOS.
 let g:CommandTFileScanner = "find"
 
+" -------------------------------------------------------------------
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" File Navigation/search using CtrlP
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 " CtrlP
 " ^^^^^
+"
+" https://github.com/kien/ctrlp.vim
 
 " CtrlP is similar to Command-T. Most people just use one or the other.
 " I've included both herein so you can get a taste of both, if you want.
 
-" https://github.com/kien/ctrlp.vim
+" BUILD:
 "
-" Checkout the source as a git submodule:
+" - How to install CtrlP as a normal Vim plugin:
 "
-"  mkdir -p ~/.vim/pack/kien/start
-"  cd ~/.vim/pack/kien/start
-"  git clone https://github.com/kien/ctrlp.vim.git
+"   mkdir -p ~/.vim/pack/kien/start
+"   cd ~/.vim/pack/kien/start
+"   git clone https://github.com/kien/ctrlp.vim.git
 "
-" Create help docs:
+" - How to create help tags:
 "
-" :helptags ~/.vim/pack/kien/start/ctrlp.vim/doc
+"   :Helptags ~/.vim/pack/kien/start/ctrlp.vim/doc
 "
-" Restart Vim.
-"
-" Usage:
+" USAGE:
 " 
-"  :CtrlP <some_dir>
+" - How to start CtrlP:
 "
-" NOTE: CtrlP won't find the file from which the command was run,
-"       so don't get trapped by searching for the file that's active.
+"   :CtrlP <some/dir>       — Open CtrlP, starting in some/dir/
 "
-" Help:
+" - Useful CtrlP commands:
 "
-"  :help ctrlp.txt
-"  :help ctrlp-options
+"   <F5>                    — Regenerate the file list
+"
+" BWARE: CtrlP won't find the file from which the command was run,
+"        so don't get trapped by searching for the file that's active.
+"
+" REFER:
+"
+"   :help ctrlp.txt
+"   :help ctrlp-options
 
 " Enable CtrlP.
-" 2015.01.27: Other code expects first entry of &rtp to be
-"             ~/.vim, so use += to append and not ^= to prepend.
+" - SAVVY/2015-01-27: Other code expects first entry of &rtp to be ~/.vim,
+"                     so use += to append and not ^= to prepend.
 set runtimepath+=~/.vim/pack/kien/start/ctrlp.vim
 
 " One Command-T to Rule Them All
