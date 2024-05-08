@@ -163,34 +163,6 @@ let g:CommandTFileScanner = "find"
 "             ~/.vim, so use += to append and not ^= to prepend.
 set runtimepath+=~/.vim/pack/kien/start/ctrlp.vim
 
-" Some other options...
-"  let g:ctrlp_working_path_mode = 'ra'
-"  let g:ctrlp_root_markers
-
-" Command-T Compared to (Vs!) CtrlP
-" ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-" First impressions: I like Command-T better.
-"   1. It includes the active file when searching (otherwise
-"      I just get confused!)
-"      ([lb] notes this is probably easy to fix in the source,
-"       but I don't want to bother finding out; I like Command-T.)
-"   2. When first invoked, Command-T shows a big list of alphabatized
-"      files (up to the top of your Gvim window) while CtrlP shows just
-"      a handful of files and is already applying an algorithm to it
-"      so the list looks incomplete.
-"   3. The Command-T search algorithm feels more natural, at least
-"      for the few things I searched. Even using a contiguous substring
-"      of the filename I was looking for, CtrlP didn't always find my
-"      file!
-"   4. Command-T is compiled... and more processing intense, it seems,
-"      but not too bad: it takes a few split seconds to start up on
-"      large projects, but that's only the first time you run it after
-"      starting Vim or searching a new project. I.e., on subsequent
-"      searches, Command-T starts immediately. For this reason, in
-"      addition to not wanting to have to change projects all the time,
-"      I chose to create the cmdt_paths directory of symlinks.
-
 " One Command-T to Rule Them All
 " ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
