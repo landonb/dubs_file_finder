@@ -88,7 +88,7 @@ let g:plugin_dubs_file_finder = 1
 "        Check the docs for more options.
 "         https://github.com/wincent/Command-T
 
-" CommandT v6 is NeoVim-only Lua rewrite.
+" Command-T v6 is NeoVim-only Lua rewrite.
 " - Opt-in to previous Ruby implementation.
 let g:CommandTPreferredImplementation='ruby'
 
@@ -97,33 +97,33 @@ let g:CommandTPreferredImplementation='ruby'
 "  See: g:CommandTSCMDirectories ('.git,.hg,.svn,.bzr,_darcs')
 let g:CommandTTraverseSCM = "file"
 
-" Always include dot-files, otherwise they're only included if you dot.
+" Always include dot-files, otherwise they're excluded by default
+" and only included if you use a dot as part of the query.
 let g:CommandTAlwaysShowDotFiles = 1
+
 " Similary always scan dot directories (which are excluded regardless
 " of you typing a complete dot-prefixed directory name).
 let g:CommandTScanDotDirectories = 1
 
-" 2017-02-25: Here's a new (to me) one:
-"
-"   Warning: maximum file limit reached
-"
-"   Increase it by setting a higher value in $MYVIMRC; eg:
+" Increase file limit maximum to avoid breaching it, e.g.,
+"     Warning: maximum file limit reached
+" - You can increase the limit by changing a command-t global, e.g.,
 "     let g:CommandTMaxFiles=200000
-"   Or suppress this warning by setting:
+" - Or you can suppress the warning by changing a different global, e.g.,
 "     let g:CommandTSuppressMaxFilesWarning=1
-"   For best performance, consider using a fast scanner; see:
+" - For best performance, consider using a 'fast' scanner (like 'find',
+"   and not the built-in, default 'ruby' scanner); see:
 "     :help g:CommandTFileScanner
-"let g:CommandTSuppressMaxFilesWarning=1
 let g:CommandTMaxFiles=1000000
-" 2017-12-12: We should try git, which runs `ls-files` and falls back to `find`.
-" 2018-05-17: Took me long enough! "git" isn't working. Not quite sure why.
-"   Well, it seems to work on some symlinks under cmdt_paths/, but not all.
-"   Whatever. I don't care too much. Command-T takes a few seconds to load the
-"   first time it's run, and I thought maybe git's ls-files would help it run
-"   faster; and now I still don't know (well, the "git" option loads Command-T
-"   a lot faster than the "find" option, but obviously it's not finding all the
-"   same files).
-"let g:CommandTFileScanner = "git"
+
+" Use a 'fast' scanner.
+" - The 'ruby' scanner works everywhere but may not be that fast.
+" - The 'git' scanner uses git-ls-files to generate file lists, but
+"   we don't want that limitation.
+" - There's also a 'watchman' scanner not discussed any further here.
+"     https://github.com/facebook/watchman
+" - The 'find' scanner uses the built-in system command, and works
+"   well on Linux and macOS.
 let g:CommandTFileScanner = "find"
 
 " CtrlP
