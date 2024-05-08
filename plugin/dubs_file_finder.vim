@@ -115,43 +115,47 @@ let g:plugin_dubs_file_finder = 1
 "   :h command-t
 "   :h command-t-ruby
 
-" Command-T v6 is NeoVim-only Lua rewrite.
-" - Opt-in to previous Ruby implementation.
-let g:CommandTPreferredImplementation='ruby'
+function! s:SetupCommandTPlainVim()
+  " Command-T v6 is NeoVim-only Lua rewrite.
+  " - Opt-in to previous Ruby implementation.
+  let g:CommandTPreferredImplementation="ruby"
 
-" Walk up directory from file's base and look for .git, etc,
-" when starting Command-T using the current file's location.
-"  See: g:CommandTSCMDirectories ('.git,.hg,.svn,.bzr,_darcs')
-let g:CommandTTraverseSCM = "file"
+  " Walk up directory from file's base and look for .git, etc,
+  " when starting Command-T using the current file's location.
+  "  See: g:CommandTSCMDirectories ('.git,.hg,.svn,.bzr,_darcs')
+  let g:CommandTTraverseSCM = "file"
 
-" Always include dot-files, otherwise they're excluded by default
-" and only included if you use a dot as part of the query.
-let g:CommandTAlwaysShowDotFiles = 1
+  " Always include dot-files, otherwise they're excluded by default
+  " and only included if you use a dot as part of the query.
+  let g:CommandTAlwaysShowDotFiles = 1
 
-" Similary always scan dot directories (which are excluded regardless
-" of you typing a complete dot-prefixed directory name).
-let g:CommandTScanDotDirectories = 1
+  " Similary always scan dot directories (which are excluded regardless
+  " of you typing a complete dot-prefixed directory name).
+  let g:CommandTScanDotDirectories = 1
 
-" Increase file limit maximum to avoid breaching it, e.g.,
-"     Warning: maximum file limit reached
-" - You can increase the limit by changing a command-t global, e.g.,
-"     let g:CommandTMaxFiles=200000
-" - Or you can suppress the warning by changing a different global, e.g.,
-"     let g:CommandTSuppressMaxFilesWarning=1
-" - For best performance, consider using a 'fast' scanner (like 'find',
-"   and not the built-in, default 'ruby' scanner); see:
-"     :help g:CommandTFileScanner
-let g:CommandTMaxFiles=1000000
+  " Increase file limit maximum to avoid breaching it, e.g.,
+  "     Warning: maximum file limit reached
+  " - You can increase the limit by changing a command-t global, e.g.,
+  "     let g:CommandTMaxFiles=200000
+  " - Or you can suppress the warning by changing a different global, e.g.,
+  "     let g:CommandTSuppressMaxFilesWarning=1
+  " - For best performance, consider using a 'fast' scanner (like 'find',
+  "   and not the built-in, default 'ruby' scanner); see:
+  "     :help g:CommandTFileScanner
+  let g:CommandTMaxFiles=1000000
 
-" Use a 'fast' scanner.
-" - The 'ruby' scanner works everywhere but may not be that fast.
-" - The 'git' scanner uses git-ls-files to generate file lists, but
-"   we don't want that limitation.
-" - There's also a 'watchman' scanner not discussed any further here.
-"     https://github.com/facebook/watchman
-" - The 'find' scanner uses the built-in system command, and works
-"   well on Linux and macOS.
-let g:CommandTFileScanner = "find"
+  " Use a 'fast' scanner.
+  " - The 'ruby' scanner works everywhere but may not be that fast.
+  " - The 'git' scanner uses git-ls-files to generate file lists, but
+  "   we don't want that limitation.
+  " - There's also a 'watchman' scanner not discussed any further here.
+  "     https://github.com/facebook/watchman
+  " - The 'find' scanner uses the built-in system command, and works
+  "   well on Linux and macOS.
+  let g:CommandTFileScanner = "find"
+endfunction
+
+call s:SetupCommandTPlainVim()
 
 " -------------------------------------------------------------------
 
