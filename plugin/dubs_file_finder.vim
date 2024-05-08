@@ -7,24 +7,24 @@
 
 " ABOUT:
 "
-" Command-T is a great tool for quickly finding and opening
-" project files.
+"   Command-T is a great tool for quickly finding and opening
+"   project files.
 "
-" This script wraps Command-T so it's available from <Leader>t
-" and opens a predefined project path.
+"   This script wraps Command-T so it's available from <Leader>t
+"   and opens a predefined project path.
 "
-" This script doesn't require you to enter a target directory.
-" Rather, you'll want to create a `cmdt_paths` directory
-" somewhere in your Vim folder (or create a same-named symlink),
-" and you'll want to populate that directory with symlinks to all
-" of your projects.
+"   This script doesn't require you to enter a target directory.
+"   Rather, you'll want to create a `cmdt_paths` directory
+"   somewhere in your Vim folder (or create a same-named symlink),
+"   and you'll want to populate that directory with symlinks to all
+"   of your projects.
 "
-" In this manner, it's just one key-combo to invoke Command-T,
-" and you don't have to specify the directory to scan. You might
-" be concerned that listing all projects' files together will make
-" it harder to find the file you want, but Command-T is such a great
-" tool that even with thousands of source files, it's still a cinch to
-" find and open files.
+"   In this manner, it's just one key-combo to invoke Command-T,
+"   and you don't have to specify the directory to scan. You might
+"   be concerned that listing all projects' files together will make
+"   it harder to find the file you want, but Command-T is such a great
+"   tool that even with thousands of source files, it's still a cinch to
+"   find and open files.
 
 if exists("g:plugin_dubs_file_finder") || &cp
   finish
