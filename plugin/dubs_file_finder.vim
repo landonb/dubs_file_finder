@@ -31,30 +31,39 @@ if exists("g:plugin_dubs_file_finder") || &cp
 endif
 let g:plugin_dubs_file_finder = 1
 
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" File Searching Helpers
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" -------------------------------------------------------------------
 
-" Regarding :set path= and :find
-" ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" File Navigation/search using :find
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+" Using :set path= and :find
+" ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 " Vim has a built-in :find command, but it doesn't implement
 " partial or fuzzy finding like Command-T, and it's tedious
 " to have to setup 'path' to list all your project directories.
 "
-" Regardless, here's roughly how it works.
+" Regardless, here's roughly how it works:
 "
-" The default path includes the current directory, /usr/include, and
-" a trailing comma which also indicates the current directory. E.g.,
-"   path=.,/usr/include,,
-" Add additional paths to the path for find to search. E.g.,
-"   let &path = &path . "," . "/path/to/source/**"
-"   ...
-" Note that you have to use double-stars to include sub-directories,
-" up to 30 levels deep.
-" After setting up the path, you can use :find to open files...
-" but it's just not as good as Command-T.
-" See :h file-searching, :h find, :h args, :h argadd.
+" - The default path includes the current directory, /usr/include, and
+"   a trailing comma which also indicates the current directory. E.g.,
+"
+"     path=.,/usr/include,,
+"
+" - You can add additional paths for find to search. E.g.,
+"
+"     let &path = &path . "," . "/path/to/source/**"
+"     ...
+"
+" - Use double-stars to include sub-directories, up to 30 levels deep.
+"
+" - After setting up the path, use :find to open files...
+"   but it's just not as good as Command-T.
+"
+" - See :h file-searching, :h find, :h args, :h argadd.
+
+" -------------------------------------------------------------------
 
 " Command-T
 " ^^^^^^^^^^
