@@ -5,18 +5,19 @@
 " -------------------------------------------------------------------
 " Copyright © 2009, 2015-2018, 2024 Landon Bouma.
 
-" ------------------------------------------
-" About:
-
+" ABOUT:
+"
 " Command-T is a great tool for quickly finding and opening
 " project files.
 "
-" This script wraps Command-T so it's available from <Ctrl-D>.
+" This script wraps Command-T so it's available from <Leader>t
+" and opens a predefined project path.
 "
 " This script doesn't require you to enter a target directory.
-" Rather, you'll want to create a ``cmdt_paths`` directory
-" somewhere in your Vim folder, and you'll want to populate
-" the directory with symlinks to all of your projects.
+" Rather, you'll want to create a `cmdt_paths` directory
+" somewhere in your Vim folder (or create a same-named symlink),
+" and you'll want to populate that directory with symlinks to all
+" of your projects.
 "
 " In this manner, it's just one key-combo to invoke Command-T,
 " and you don't have to specify the directory to scan. You might
