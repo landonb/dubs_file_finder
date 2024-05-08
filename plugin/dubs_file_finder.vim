@@ -65,37 +65,50 @@ let g:plugin_dubs_file_finder = 1
 
 " -------------------------------------------------------------------
 
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" File Navigation/search using Command-T
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 " Command-T
 " ^^^^^^^^^^
-
+" 
 " https://github.com/wincent/Command-T
-"
-"  mkdir -p ~/.vim/pack/wincent/start
-"  cd ~/.vim/pack/wincent/start
-"  git clone https://github.com/wincent/command-t.git
-"
-" Create help tags:
-"
-"  :Helptags
-"
-" Compile:
-"
-"  sudo apt-get install ruby-dev
-"  cd ~/.vim/pack/wincent/start/command-t/ruby/command-t
-"  ruby extconf.rb
-"  make
-"
-" Usage:
-"
-"  :CommandT <some_dir>
-"
-" Help:
-"
-"  :h command-t
 
-" NOTE: CommandT has some nifty options.
-"        Check the docs for more options.
-"         https://github.com/wincent/Command-T
+" BUILD:
+"
+" - How to install Command-T as a normal Vim plugin:
+"
+"   mkdir -p ~/.vim/pack/wincent/start
+"   cd ~/.vim/pack/wincent/start
+"   git clone https://github.com/wincent/command-t.git
+"
+" - How to build Command-T:
+"
+"   sudo apt-get install ruby-dev
+"   cd ~/.vim/pack/wincent/start/command-t/ruby/command-t
+"   ruby extconf.rb
+"   make
+"
+" - How to create help tags:
+"
+"   :Helptags ~/.vim/pack/wincent/start/command-t/doc
+"
+" USAGE:
+"
+" - How to start Command-T:
+"
+"   :CommandT <some/dir>    — Open Command-T, starting in some/dir/
+"
+"   <Leader>t               — Open Command-T, starting in path/to/cmdt_paths/
+"
+" - Useful Command-T commands:
+"
+"   <C-f>                   — Regenerate the file list (flush the cache)
+"
+" REFER:
+"
+"   :h command-t
+"   :h command-t-ruby
 
 " Command-T v6 is NeoVim-only Lua rewrite.
 " - Opt-in to previous Ruby implementation.
