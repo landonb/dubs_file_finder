@@ -26,6 +26,11 @@
 "   tool that even with thousands of source files, it's still a cinch to
 "   find and open files.
 
+" CXREF:
+"
+"   ~/.vim/pack/ctrlpvim/start/ctrlp.vim
+"   ~/.vim/pack/wincent/start/command-t
+
 if exists("g:plugin_dubs_file_finder") || &cp
   finish
 endif
