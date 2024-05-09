@@ -249,64 +249,124 @@ set runtimepath+=~/.vim/pack/kien/start/ctrlp.vim
 "        to your projects, and use <Leader>t to invoke Command-T on
 "        this path.
 
-if !exists("dubs_file_finder_alert_pending")
-  let g:dubs_file_finder_alert_pending = 0
-endif
-
-" FIXME: Make DRY. This fcn. was copied from dubs_grep_steady.
-let s:ffdir = finddir("cmdt_paths", pathogen#split(&rtp)[0] . "/**")
-if s:ffdir != ''
-  let s:ffdir = fnamemodify(s:ffdir, ":p:h")
-else
-  " No file, but there should be a template we can copy.
-  let s:tmplate = finddir('cmdt_paths.template',
-                          \ pathogen#split(&rtp)[0] . "/**")
-  if s:tmplate != ''
-    let s:tmplate = fnamemodify(s:tmplate, ":p")
-    " Get the filename root, i.e., drop the ".template",
-    " but first remove the trailing slash.
-    let s:sepr = pathogen#slash()
-    let s:ffdir = substitute(s:tmplate, s:sepr.'$', '', 'g')
-    let s:ffdir = fnamemodify(s:ffdir, ":r")
-    " Make a copy of the template.
-    if has('macunix')
-      " Default macOS BSD cp's -a same as -pPR, and -r and -R mutually exclusive.
-      " - On linux (has('unix')?), GNU -a same as -dR.
-      silent execute '!/bin/cp -a ' . s:tmplate . ' ' . s:ffdir
-    else
-      " Linux/GNU cp.
-      silent execute '!/bin/cp -ra ' . s:tmplate . ' ' . s:ffdir
-    endif
-    " We're initially called on startup when it's a bad idea to alert
-    " the user -- they haven't done anything yet.
-    let g:dubs_file_finder_alert_pending = 1
+function! s:DubsFileFindrLocateCmdtPaths()
+  if exists("g:dubs_file_finder_cmdt_paths")
+    " Allow user to specify the project path.
+    let l:ffdir = g:dubs_file_finder_cmdt_paths
   else
-    echomsg 'Warning: Dubs Vim could not find cmdt_paths.template'
+    " Check for known path first:
+    "   ~/.vim/pack/landonb/start/dubs_file_finder/cmdt_paths
+    let l:ffdir = $HOME . "/.vim/pack/landonb/start/dubs_file_finder/cmdt_paths"
   endif
-endif
 
-command -nargs=? -complete=dir DubsFileFindrWarnTell
-  \ call DubsFileFindrWarnTellDo(<q-args>)
-function DubsFileFindrWarnTellDo(path)
-  "echomsg 'Notice: path: ' . a:path . ' / s:ffdir ' . s:ffdir
-  if g:dubs_file_finder_alert_pending == 1
-    "echomsg 'Notice: To use <Ctrl-D>, add symlinks to ' . s:ffdir
-    call confirm('Notice: To use <Ctrl-D>, add symlinks to ' . s:ffdir)
-    let g:dubs_file_finder_alert_pending = 0
+  " Note isdirectory returns true (1) if symlink to directory.
+  if ! isdirectory(l:ffdir)
+    if exists("g:dubs_file_finder_cmdt_paths")
+      echom 'Warning: g:dubs_file_finder_cmdt_paths is not a directory: '
+        \ . g:dubs_file_finder_cmdt_paths
+    endif
+
+    " Find any cmdt_paths/ under ~/.vim.
+    let l:ffdir = finddir("cmdt_paths", pathogen#split(&rtp)[0] . "/**")
+    if l:ffdir != ''
+      call s:DubsFileFindrWarnIfMultipleCmdtPathsPresent()
+
+      let l:ffdir = fnamemodify(l:ffdir, ":p:h")
+    else
+      " No file, but there should be a template we can copy.
+      let s:fftemplate = s:DubsFileFindrCreateCmdtPathsFromTemplate()
+    endif
   endif
-  " LATER: Latest wincent/command-t v6 Lua rewrite's CommandT does
-  " not accept path arg. Might try this instead if this plugin
-  " upgraded to NeoVim/Lua plug:
-  "   lcd a:path
-  "   call CommandT
-  execute ':CommandT ' . a:path
+
+  return l:ffdir
 endfunction
 
-if s:ffdir != ''
-  execute "map <silent> <leader>t :DubsFileFindrWarnTell " . s:ffdir . "<CR>"
-else
-  call confirm('Warning: Did not find a cmdt_paths directory.', 'OK')
-endif
+" Warn-Tell the user if they've got multiple file finder directories.
+function! s:DubsFileFindrWarnIfMultipleCmdtPathsPresent()
+  let l:matches = finddir("cmdt_paths", pathogen#split(&rtp)[0] . "/**", -1)
+
+  if (len(l:matches) > 1)
+    echom 'Warning: Found ' . dcnt . ' cmdt_paths/ matches under ~/.vim'
+      \ . ' / Consider setting g:dubs_file_finder_cmdt_paths'
+  endif
+endfunction
+
+function! s:DubsFileFindrCreateCmdtPathsFromTemplate()
+  let l:tmplate = finddir('cmdt_paths.template', pathogen#split(&rtp)[0] . "/**")
+
+  if l:tmplate == ''
+    echomsg 'Warning: dubs_file_finder could not find cmdt_paths.template'
+
+    return
+  endif
+
+  let l:tmplate = fnamemodify(l:tmplate, ":p")
+
+  " Get the filename root, i.e., drop the ".template",
+  " but first remove the trailing slash.
+  let l:sepr = pathogen#slash()
+  let l:ffdir = substitute(l:tmplate, l:sepr.'$', '', 'g')
+  let l:ffdir = fnamemodify(l:ffdir, ":r")
+
+  " Make a copy of the template.
+  if has('macunix')
+    " Default macOS BSD cp's -a same as -pPR, and -r and -R mutually exclusive.
+    " - On linux (has('unix')?), GNU -a same as -dR.
+    silent execute '!/bin/cp -a ' . l:tmplate . ' ' . l:ffdir
+  else
+    " Linux/GNU cp.
+    silent execute '!/bin/cp -ra ' . l:tmplate . ' ' . l:ffdir
+  endif
+
+  return l:ffdir
+endfunction
+
+function! s:OpenCmdtPaths(ffdir)
+  " While we could cache the cmdt_paths location, check it every time,
+  " in case user/something changed g:dubs_file_finder_cmdt_paths.
+  if a:ffdir != ''
+    let l:ffdir = a:ffdir
+  else
+    let l:ffdir = s:DubsFileFindrLocateCmdtPaths()
+  endif
+
+  if 1 | echomsg 'dubs_file_finder: ffdir: ' . l:ffdir | endif
+
+  if l:ffdir == ''
+    " ALTLY: echomsg
+    call confirm('Notice: To use <Leader>t, add symlinks to ' . s:fftemplate)
+
+    return
+  endif
+
+  " See s:SetupCommandTPlainVim(), which uses Lua tooling.
+  if has('nvim')
+    " The wincent/command-t v6 Lua :CommandT does not accept path arg.
+    lcd l:ffdir
+
+    :CommandT
+  else
+    execute ':CommandT ' . l:ffdir
+  endif
+endfunction
+
+function! s:SetupCommandTBinding()
+  " User can call :DubsFileFinder with or without a path
+  command -nargs=? -complete=dir DubsFileFinder
+    \ call <SID>OpenCmdtPaths(<q-args>)
+
+  " Or user can invoke <Leader>t
+  if !hasmapto('<Plug>DubsFileFinder_OpenCmdtPaths')
+    map <silent> <unique> <Leader>t
+      \ <Plug>DubsFileFinder_OpenCmdtPaths
+    " Map <Plug> to an <SID> function.
+    noremap <silent> <unique> <script>
+      \ <Plug>DubsFileFinder_OpenCmdtPaths
+      \ :call <SID>OpenCmdtPaths('')<CR>
+  endif
+endfunction
+
+call s:SetupCommandTBinding()
 
 " ------------------------------------------
 
