@@ -206,45 +206,48 @@ call s:SetupCommandTPlainVim()
 "                     so use += to append and not ^= to prepend.
 set runtimepath+=~/.vim/pack/kien/start/ctrlp.vim
 
-" One Command-T to Rule Them All
-" ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+" -------------------------------------------------------------------
 
-" DEVs: Populate the cmdt_paths directory with a bunch of symlinks
-"       and use Ctrl-E to invoke Command-T. It's a snap!
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" Command-T <Leader>t Binding
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-" Here we override Ctrl-D, because that's a very valuable key combination
-" and it's current inhabitant is frittering away its opportunity to be
-" useful. Specifically, Ctrl-D is redundant (replaced by more common keys),
-" and it's also non-conformist: it performs a different action in different
-" modes. Since we intend to use Command-T whenever we feel like it, we'll
-" map it to all modes of Ctrl-D.
-"
-" A little history:
-"
-"   In Command mode, Ctrl-U and Ctrl-D page up and down, respectively;
-"                    Ctrl-E and Ctrl-Y scroll the window up or down one line.
-"                    Except in mswin mode, then Ctrl-Y is remapped to Redo.
-"
-"   In Insert mode, Ctrl-U deletes to beginning of line,
-"                   Ctrl-D doesn't seem to do anything?
-"                   Ctrl-E copies the character one line beneath the cursor
-"                   to the current line, so you can mirror the next line.
-"                     EXPLAIN: Where is Ctrl-E mapped or documented?
-"                   Ctrl-Y makes my screen blip.
-"
-"   If you've installed Dubs Vim,
-"                   You can scroll the window by one line with <Ctrl-Up/Down>,
-"                   and you can page up and down with <PageUp> and <PageDown>.
-"
-" As you can see, the navigation commands only work in command mode, and
-" one of them is already remapped. Also, in insert mode. Ctrl-D doesn't
-" seem used. So we might as well map it for both modes to mean Directory
-" File Search or something -- just remember, Ctrl-D for directories, i.e.,
-" I want to find a file in some directory somewhere.
+" Combined Project Command-T Binding
+" ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-" We don't require that the cmdt_paths directory be in any one
-" particular location, or even that it be so named, so long as
-" we can find it amongst your Vim files.
+" The legacy :CommandT command takes a path arg, e.g.,
+"
+"     :CommandT path/to/project
+"
+" - To use this functionality in Command-T v6, you must opt-in:
+"
+"     g:CommandTPreferredImplementation='ruby'
+"
+" - That's because the default :CommandT functionality in v6
+"   (aka Lua Command-T) eschews args and uses the current dir.
+"
+"   - So we'd have to call, e.g., :lcd first before v6's :CommandT
+"
+"   - But we don't, because we opt-in to the legacy behavior,
+"     so we rely on passing a path argument.
+"
+" For our binding, we don't want to bug the user to specify the path.
+"
+" - The <Leader>t binding invokes Command-T using a known path that
+"   the user is expected to populate.
+"
+"   - This plugin looks for and uses the first directory or symlink
+"     named 'cmdt_paths' under ~/.vim
+"
+"   - One approach is to create a directory of symlinks to all
+"     projects, so that invoking Command-T creates a file list
+"     of all your projects' files. In this manner, you wouldn't
+"     need to use more than one path with Command-T; you just
+"     always seed Command-T will *all* files, from all projects.
+"
+" USAGE: Populate the cmdt_paths directory with a bunch of symlinks
+"        to your projects, and use <Leader>t to invoke Command-T on
+"        this path.
 
 if !exists("dubs_file_finder_alert_pending")
   let g:dubs_file_finder_alert_pending = 0
@@ -300,36 +303,7 @@ function DubsFileFindrWarnTellDo(path)
 endfunction
 
 if s:ffdir != ''
-
-  " All The modes:
-  "   Normal
-  "   Visual and Select
-  "   Operator-pending
-  "   Insert
-  "   Command-line.
-  " 2018-05-07: (lb): WRONG WRONG WRONG: Do not hide Vim's Ctrl-D, which unindents.
-  " Instead, just rely on <Leader>d, which CommandT already maps for us.
-  " NOTE: <C-S-D> doesn't work! But <Leader>D is different than <Leader>d!!
-  "execute "nnoremap <C-D>       :DubsFileFindrWarnTell " . s:ffdir . "<CR>"
-  "execute "vnoremap <C-D> :<C-U>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
-  "execute "onoremap <C-D>  <C-C>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
-  "execute "inoremap <C-D>  <C-O>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
-  "execute "cnoremap <C-D>  <C-C>:DubsFileFindrWarnTell " . s:ffdir . "<CR>"
-
-  " 2018-05-17: (lb): I keep running <leader>t, which takes a while to load,
-  " and isn't the cmdt_paths/ directory (not sure what the default dir is).
-  " So just remap Command T's <leader>t.
-  "execute "map <silent> <leader>d :DubsFileFindrWarnTell " . s:ffdir . "<CR>"
   execute "map <silent> <leader>t :DubsFileFindrWarnTell " . s:ffdir . "<CR>"
-
-  " Warn-Tell the user if they've got multiple file finder directories.
-
-  " FIXME
-"  let dcnt = finddir("cmdt_paths", pathogen#split(&rtp)[0] . "/**", -1)
-"  if (dcnt > 1)
-"    call confirm('Warning: found ' . dcnt . ' cmdt_paths directories.',
-"               \ 'OK')
-"  endif
 else
   call confirm('Warning: Did not find a cmdt_paths directory.', 'OK')
 endif
