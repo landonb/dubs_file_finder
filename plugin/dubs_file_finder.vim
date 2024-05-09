@@ -175,55 +175,6 @@ call s:SetupCommandTPlainVim()
 
 " -------------------------------------------------------------------
 
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" File Navigation/search using CtrlP
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-" CtrlP
-" ^^^^^
-"
-" https://github.com/kien/ctrlp.vim
-
-" CtrlP is similar to Command-T. Most people just use one or the other.
-" I've included both herein so you can get a taste of both, if you want.
-
-" BUILD:
-"
-" - How to install CtrlP as a normal Vim plugin:
-"
-"   mkdir -p ~/.vim/pack/kien/start
-"   cd ~/.vim/pack/kien/start
-"   git clone https://github.com/kien/ctrlp.vim.git
-"
-" - How to create help tags:
-"
-"   :Helptags ~/.vim/pack/kien/start/ctrlp.vim/doc
-"
-" USAGE:
-" 
-" - How to start CtrlP:
-"
-"   :CtrlP <some/dir>       — Open CtrlP, starting in some/dir/
-"
-" - Useful CtrlP commands:
-"
-"   <F5>                    — Regenerate the file list
-"
-" BWARE: CtrlP won't find the file from which the command was run,
-"        so don't get trapped by searching for the file that's active.
-"
-" REFER:
-"
-"   :help ctrlp.txt
-"   :help ctrlp-options
-
-" Enable CtrlP.
-" - SAVVY/2015-01-27: Other code expects first entry of &rtp to be ~/.vim,
-"                     so use += to append and not ^= to prepend.
-set runtimepath+=~/.vim/pack/kien/start/ctrlp.vim
-
-" -------------------------------------------------------------------
-
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Command-T <Leader>t Binding
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -384,7 +335,54 @@ endfunction
 
 call s:SetupCommandTBinding()
 
-" ------------------------------------------
+" -------------------------------------------------------------------
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" File Navigation/search using CtrlP
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+" CtrlP
+" ^^^^^
+"
+" https://github.com/kien/ctrlp.vim
+
+" CtrlP is similar to Command-T. Most people just use one or the other.
+" I've included both herein so you can get a taste of both, if you want.
+
+" BUILD:
+"
+" - How to install CtrlP as a normal Vim plugin:
+"
+"   mkdir -p ~/.vim/pack/kien/start
+"   cd ~/.vim/pack/kien/start
+"   git clone https://github.com/kien/ctrlp.vim.git
+"
+" - How to create help tags:
+"
+"   :Helptags ~/.vim/pack/kien/start/ctrlp.vim/doc
+"
+" USAGE:
+" 
+" - How to start CtrlP:
+"
+"   :CtrlP <some/dir>       — Open CtrlP, starting in some/dir/
+"
+" - Useful CtrlP commands:
+"
+"   <F5>                    — Regenerate the file list
+"
+" BWARE: CtrlP won't find the file from which the command was run,
+"        so don't get trapped by searching for the file that's active.
+"
+" REFER:
+"
+"   :help ctrlp.txt
+"   :help ctrlp-options
+
+" Enable CtrlP.
+" - SAVVY/2015-01-27: Other code expects first entry of &rtp to be ~/.vim,
+"                     so use += to append and not ^= to prepend.
+set runtimepath+=~/.vim/pack/kien/start/ctrlp.vim
 
 function! s:SetCtrlPUserCommandRg()
   let g:ctrlp_user_command = 'rg "" %s --files-with-matches --color=never --hidden --follow --no-ignore-vcs --no-ignore-parent --glob !/.git/'
