@@ -116,6 +116,22 @@ let g:plugin_dubs_file_finder = 1
 "   :h command-t-ruby
 
 function! s:SetupCommandTPlainVim()
+  " SPIKE: Demo in NeoVim.
+  " - Verify dot directories are scanned.
+  if has('nvim')
+    " Try the Lua tooling.
+    " - ignore_case = nil,  — If nil, will infer from Neovim's 'ignorecase'
+    "   smart_case = nil,   — If nil, will infer from Neovim's 'smartcase'
+    require('wincent.commandt').setup({
+      \ always_show_dot_files = true,
+      \ never_show_dot_files = false,
+      \ ignore_case = nil,
+      \ smart_case = nil,
+    \ })
+
+    return
+  endif
+
   " Command-T v6 is NeoVim-only Lua rewrite.
   " - Opt-in to previous Ruby implementation.
   let g:CommandTPreferredImplementation="ruby"
