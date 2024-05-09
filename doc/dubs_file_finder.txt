@@ -35,8 +35,8 @@ From the terminal:
 ==============================================================================
 2. File Finder Overview					*dubs-filfndr-overview*
 
-				*<Ctrl-D>* *<C-d>*
-<Ctrl-D>		Run `:Command-T` on the `cmdt_paths` directory,
+				*<Leader>t* *<C-d>*
+<Leader>t*		Run `:Command-T` on the `cmdt_paths` directory,
 			which contains symlinks to one or more projects
 			whose file hierarchies you can fuzzily search
                         to locate and open files.
@@ -48,7 +48,7 @@ The short of it~
 
 2. Populate the directory with symlinks.
 
-3. Press `<Ctrl-D>`.
+3. Press `<Leader>t*`.
 
 The long of it~
 
@@ -78,7 +78,7 @@ two other plugins that help you find files.
 ==============================================================================
 2. Different Ways to Find Files				*dubs-filfndr-etc*
 
-<Ctrl-D>		Calls Command-T to Fuzzy-find by filename.
+<Leader>t*		Calls Command-T to Fuzzy-find by filename.
 			Searches projects symlinked from
 			'dubs_file_finder/cmdt_paths'.
 
