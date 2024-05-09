@@ -387,7 +387,7 @@ call s:SetupCommandTBinding()
 " ------------------------------------------
 
 function! s:SetCtrlPUserCommandRg()
-  let g:ctrlp_user_command = 'rg %s --files-with-matches --color=never'
+  let g:ctrlp_user_command = 'rg "" %s --files-with-matches --color=never --hidden --follow --no-ignore-vcs --no-ignore-parent --glob !/.git/'
 endfunction
 
 function! s:SetCtrlPUserCommandAg()
@@ -398,6 +398,9 @@ function! s:SetCtrlPUserCommandAg()
 endfunction
 
 function! s:SetCtrlPUserCommand()
+  let g:ctrlp_follow_symlinks = 1
+  let g:ctrlp_show_hidden = 1
+
   " Speed up fuzzy file finding -- and respect .ignore and .gitignore rules!
   if executable("rg")
     call s:SetCtrlPUserCommandRg()
