@@ -408,8 +408,5 @@ function! s:SetCtrlPUserCommand()
   endif
 endfunction
 
-" FIXME/2018-05-06: (lb): Should probably function-ize everything
-" and make a main().
-" FIXME/2020-02-04: (lb): And move most code under autoload/.
 call s:SetCtrlPUserCommand()
 
