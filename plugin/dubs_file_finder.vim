@@ -385,7 +385,7 @@ call s:SetupCommandTBinding()
 set runtimepath+=~/.vim/pack/kien/start/ctrlp.vim
 
 function! s:SetCtrlPUserCommandRg()
-  let g:ctrlp_user_command = 'rg "" %s --files-with-matches --color=never --hidden --follow --no-ignore-vcs --no-ignore-parent --glob !/.git/'
+  let g:ctrlp_user_command = 'rg "" %s --files-with-matches --color=never --hidden --follow --no-ignore-vcs --no-ignore-parent --glob !/.git/ --glob !/.tox/'
 endfunction
 
 function! s:SetCtrlPUserCommandAg()
