@@ -385,6 +385,10 @@ call s:SetupCommandTBinding()
 set runtimepath+=~/.vim/pack/kien/start/ctrlp.vim
 
 function! s:SetCtrlPUserCommandRg()
+  " USYNC: Similar rg --glob's:
+  "   ~/.vim/pack/landonb/start/dubs_file_finder/plugin/dubs_file_finder.vim
+  "   ~/.vim/pack/landonb/start/dubs_grep_steady/bin/vim-grepprg-rg-sort
+  "   ~/.kit/sh/home-fries/lib/alias/alias_rg_tag.sh
   let g:ctrlp_user_command = 'rg "" %s'
     \ . ' --files-with-matches'
     \ . ' --hidden'
