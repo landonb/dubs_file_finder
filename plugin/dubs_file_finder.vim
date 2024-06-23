@@ -391,6 +391,7 @@ function! s:SetCtrlPUserCommandRg()
   "   ~/.kit/sh/home-fries/lib/alias/alias_rg_tag.sh
   let g:ctrlp_user_command = 'rg "" %s'
     \ . ' --files-with-matches'
+    \ . ' --smart-case'
     \ . ' --hidden'
     \ . ' --follow'
     \ . ' --no-ignore-vcs'
@@ -398,6 +399,7 @@ function! s:SetCtrlPUserCommandRg()
     \ . ' --color=never '
     \ . ' --glob !/.git/'
     \ . ' --glob !/.tox/'
+    \ . ' --glob !*.xpm'
 endfunction
 
 function! s:SetCtrlPUserCommandAg()
