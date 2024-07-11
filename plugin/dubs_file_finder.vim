@@ -385,6 +385,7 @@ call s:SetupCommandTBinding()
 set runtimepath+=~/.vim/pack/kien/start/ctrlp.vim
 
 function! s:SetCtrlPUserCommandRg()
+  " SAVVY: Testing shows `rg` skip graphics formats: *.jpg, *.png, *.xcf
   " USYNC: Similar rg --glob's:
   "   ~/.vim/pack/landonb/start/dubs_file_finder/plugin/dubs_file_finder.vim
   "   ~/.vim/pack/landonb/start/dubs_grep_steady/bin/vim-grepprg-rg-sort
@@ -399,6 +400,7 @@ function! s:SetCtrlPUserCommandRg()
     \ . ' --color=never '
     \ . ' --glob !/.git/'
     \ . ' --glob !/.tox/'
+    \ . ' --glob !*.svg'
     \ . ' --glob !*.xpm'
 endfunction
 
