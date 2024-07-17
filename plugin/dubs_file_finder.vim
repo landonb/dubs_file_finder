@@ -398,8 +398,8 @@ function! s:SetCtrlPUserCommandRg()
     \ . ' --no-ignore-vcs'
     \ . ' --no-ignore-parent'
     \ . ' --color=never '
-    \ . ' --glob !/.git/'
-    \ . ' --glob !/.tox/'
+    \ . ' --glob !.git/'
+    \ . ' --glob !.tox/'
     \ . ' --glob !*.svg'
     \ . ' --glob !*.xpm'
 endfunction
