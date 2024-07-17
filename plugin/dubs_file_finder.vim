@@ -400,6 +400,7 @@ function! s:SetCtrlPUserCommandRg()
     \ . ' --color=never '
     \ . ' --glob !.git/'
     \ . ' --glob !.tox/'
+    \ . ' --glob !node_modules/'
     \ . ' --glob !*.svg'
     \ . ' --glob !*.xpm'
 endfunction
