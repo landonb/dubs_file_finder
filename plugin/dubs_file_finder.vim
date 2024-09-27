@@ -387,9 +387,10 @@ set runtimepath+=~/.vim/pack/kien/start/ctrlp.vim
 function! s:SetCtrlPUserCommandRg()
   " SAVVY: Testing shows `rg` skip graphics formats: *.jpg, *.png, *.xcf
   " USYNC: Similar rg --glob's:
+  "   ~/.depoxy/ambers/home/.projlns/infuse-projlns-core.sh
+  "   ~/.kit/sh/home-fries/lib/alias/alias_rg_tag.sh
   "   ~/.vim/pack/landonb/start/dubs_file_finder/plugin/dubs_file_finder.vim
   "   ~/.vim/pack/landonb/start/dubs_grep_steady/bin/vim-grepprg-rg-sort
-  "   ~/.kit/sh/home-fries/lib/alias/alias_rg_tag.sh
   let g:ctrlp_user_command = 'rg "" %s'
     \ . ' --files-with-matches'
     \ . ' --smart-case'
