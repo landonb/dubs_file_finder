@@ -109,7 +109,7 @@ find and open files.
 You can instead access Command-T directly
 using ``:CommandT {some_dir}``.
 
-Compare to `CtrlP <https://github.com/kien/ctrlp.vim>`__
+Compare to `CtrlP <https://github.com/ctrlpvim/ctrlp.vim>`__
 and `NERDTree <https://github.com/scrooloose/nerdtree>`__,
 two other plugins that help you find files.
 
@@ -127,7 +127,7 @@ Finding and Opening Files (Trendy Methods)
                                                             The ``cmdt_paths`` directory is just a collection of symlinks
                                                             to project folders whose files you want Command-T to list for you.
 ---------------------------  ----------------------------  ------------------------------------------------------------------------------
- ``:CtrlP <somedir>``         Use CtrlP to find files       The `CtrlP <https://kien.github.io/ctrlp.vim/>`__
+ ``:CtrlP <somedir>``         Use CtrlP to find files       The `CtrlP <https://ctrlpvim/ctrlp.vim/>`__
                                                             plugin is nifty, but I like Command-T better,
                                                             so I didn't bind this command to an easy key combination.
                                                             It's included anyway so you can try different find-and-open-file

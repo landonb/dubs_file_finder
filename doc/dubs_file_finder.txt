@@ -71,7 +71,7 @@ find and open files.
 You can instead access Command-T directly using
 `:CommandT` `{some_dir}`.
 
-Compare to `CtrlP` <https://github.com/kien/ctrlp.vim>
+Compare to `CtrlP` <https://github.com/ctrlpvim/ctrlp.vim>
 and `NERDTree` <https://github.com/scrooloose/nerdtree>,
 two other plugins that help you find files.
 

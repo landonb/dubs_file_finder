@@ -344,7 +344,7 @@ call s:SetupCommandTBinding()
 " CtrlP
 " ^^^^^
 "
-" https://github.com/kien/ctrlp.vim
+" https://github.com/ctrlpvim/ctrlp.vim
 
 " CtrlP is similar to Command-T. Most people just use one or the other.
 " I've included both herein so you can get a taste of both, if you want.
@@ -353,13 +353,13 @@ call s:SetupCommandTBinding()
 "
 " - How to install CtrlP as a normal Vim plugin:
 "
-"   mkdir -p ~/.vim/pack/kien/start
-"   cd ~/.vim/pack/kien/start
-"   git clone https://github.com/kien/ctrlp.vim.git
+"   mkdir -p ~/.vim/pack/ctrlpvim/start
+"   cd ~/.vim/pack/ctrlpvim/start
+"   git clone https://github.com/ctrlpvim/ctrlp.vim.git
 "
 " - How to create help tags:
 "
-"   :Helptags ~/.vim/pack/kien/start/ctrlp.vim/doc
+"   :Helptags ~/.vim/pack/ctrlpvim/start/ctrlp.vim/doc
 "
 " USAGE:
 " 
@@ -382,7 +382,7 @@ call s:SetupCommandTBinding()
 " Enable CtrlP.
 " - SAVVY/2015-01-27: Other code expects first entry of &rtp to be ~/.vim,
 "                     so use += to append and not ^= to prepend.
-set runtimepath+=~/.vim/pack/kien/start/ctrlp.vim
+set runtimepath+=~/.vim/pack/ctrlpvim/start/ctrlp.vim
 
 function! s:SetCtrlPUserCommandRg()
   " SAVVY: Testing shows `rg` skip graphics formats: *.jpg, *.png, *.xcf
