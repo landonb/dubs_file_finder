@@ -4,7 +4,26 @@ Dubs Vim |em_dash| File Finder
 
 .. |em_dash| unicode:: 0x2014 .. em dash
 
-**Or, Just a Command-T Wrapper**
+.. **Or, Just a Command-T Wrapper**
+
+Deprecated
+==========
+
+This plugin is deprecated.
+
+Please consider using
+`https://github.com/junegunn/fzf.vim
+<https://github.com/junegunn/fzf.vim>`__
+instead.
+
+- See also the `DepoXy
+  <https://github.com/DepoXy/depoxy>`__ project's `vim-depoxy
+  <https://github.com/DepoXy/depoxy/blob/release/home/.vim/pack/DepoXy/start/vim-depoxy/plugin/add-fzf-path.vim>`__
+  plugin, which shows how you might integrate ``junegunn/fzf.vim``
+  into your environment (e.g., setting up the ``rg`` command
+  and defining a few ``<Leader>`` maps).
+
+*The original README follows:*
 
 About This Plugin
 =================

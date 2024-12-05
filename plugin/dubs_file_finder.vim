@@ -28,8 +28,8 @@
 
 " CXREF:
 "
-"   ~/.vim/pack/ctrlpvim/start/ctrlp.vim
-"   ~/.vim/pack/wincent/start/command-t
+"   ~/.vim/pack/ctrlpvim/opt/ctrlp.vim
+"   ~/.vim/pack/wincent/opt/command-t
 
 if exists("g:plugin_dubs_file_finder") || &cp
   finish
@@ -216,6 +216,45 @@ call s:SetupCommandTPlainVim()
 "        to your projects, and use <Leader>t to invoke Command-T on
 "        this path.
 
+" BROKN: The following <Leader>t shortcut to :CommandT is somewhat broken.
+"
+" - The author has since settled on using junegunn/fzf.vim:
+"     https://github.com/junegunn/fzf.vim
+"   Which is wired by DepoXy:
+"     https://github.com/DepoXy/depoxy#🍯
+"       ~/.depoxy/ambers/home/.vim/pack/DepoXy/start/vim-depoxy/plugin/add-fzf-path.vim
+"   Whereas this script wires CtrlP and CommandT:
+"     https://github.com/ctrlpvim/ctrlp.vim
+"     https://github.com/wincent/command-t
+"
+" - All 3 projects are actively maintained.
+"   - But they use different implementations:
+"     - junegunn/fzf.vim    — uses Go
+"     - ctrlpvim/ctrlp.vim  — uses Vimscript
+"     - wincent/command-t   — legacy uses Ruby; latest uses Lua (Neovim-only)
+"
+" - The author assumes the Go implementation is the fastest, though I have
+"   not profiled. However, junegunn/fzf.vim works well for me, and does
+"   everything I need (which is just opening files; I don't use FZF for
+"   opening buffers, jumping to tags, running commands, or traversing
+"   history, etc., which are other features some of the plugins support).
+" 
+" DUNNO: Note that the following code wires CommandT to <Leader>t, but for
+" some reason it's not showing all the projects I have symlinked under the
+" cmdt_paths directory. Rather, it's showing just one directory's .git/
+" files, for some reason (even though it indicates that it scans 100s of
+" thousands of files). But I don't really care to investigate, because
+" junegunn/fzf.vim works (and I have it's functionality wired to
+" <Leader>F and a few other bindings).
+" - SAVVY: Note if you disable the following code, the CommandT plugin
+"   nonetheless wires itself to <Leader>t (and also wires <Leader>b
+"   and <Leader>j), and you cannot disable these bindings (i.e., not
+"   using a 'g:' global variable) unless you wanted to edit its source.
+"   - CXREF:
+"       ~/.vim/pack/wincent/start/command-t/plugin/command-t.vim
+"     Or, if it's installed but disabled by default:
+"       ~/.vim/pack/wincent/opt/command-t/plugin/command-t.vim
+
 function! s:DubsFileFindrLocateCmdtPaths()
   if exists("g:dubs_file_finder_cmdt_paths")
     " Allow user to specify the project path.
@@ -359,7 +398,7 @@ call s:SetupCommandTBinding()
 "
 " - How to create help tags:
 "
-"   :Helptags ~/.vim/pack/ctrlpvim/start/ctrlp.vim/doc
+"   :Helptags ~/.vim/pack/ctrlpvim/opt/ctrlp.vim/doc
 "
 " USAGE:
 " 
@@ -378,11 +417,39 @@ call s:SetupCommandTBinding()
 "
 "   :help ctrlp.txt
 "   :help ctrlp-options
+"
+" CALSO:
+"
+"   While :CtrlP is wired, author uses junegunn/fzf.vim instead:
+"
+"     https://github.com/junegunn/fzf.vim
+"
+"   And wires it to <Leader>F and a few other bindings using a
+"   DepoXy Vim plugin:
+"
+"     https://github.com/DepoXy/depoxy/blob/release/home/.vim/pack/DepoXy/start/vim-depoxy/plugin/add-fzf-path.vim
+"
+"   - Found within the DepoXy project:
+"
+"     https://github.com/DepoXy/depoxy#🍯
+"
+"   - Which you might have locally at:
+"
+"     ~/.depoxy/ambers/home/.vim/pack/DepoXy/start/vim-depoxy/plugin/add-fzf-path.vim
+"
+"   Note that CtrlP is written in 'pure Vimscript', whereas junegunn/fzf.vim
+"   runs a Go command. So if your vendor doesn't let you run Go on your
+"   work machine, you might want/need to use :CtrlP instead.
+"
+"   DUNNO: However, :CtrlP (like :CommandT, as discussed above) doesn't
+"   quite work for the author — it only shows a few files.
+"   - But rather than investigate, I'm deprecating this plugin in favor
+"     of junegunn/fzf.vim and DepoXy's vim-depoxy plugin.
 
 " Enable CtrlP.
 " - SAVVY/2015-01-27: Other code expects first entry of &rtp to be ~/.vim,
 "                     so use += to append and not ^= to prepend.
-set runtimepath+=~/.vim/pack/ctrlpvim/start/ctrlp.vim
+set runtimepath+=~/.vim/pack/ctrlpvim/opt/ctrlp.vim
 
 function! s:SetCtrlPUserCommandRg()
   " SAVVY: Testing shows `rg` skip graphics formats: *.jpg, *.png, *.xcf
