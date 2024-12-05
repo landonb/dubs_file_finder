@@ -392,12 +392,12 @@ function! s:SetCtrlPUserCommandRg()
   "   ~/.vim/pack/landonb/start/dubs_file_finder/plugin/dubs_file_finder.vim
   "   ~/.vim/pack/landonb/start/dubs_grep_steady/bin/vim-grepprg-rg-sort
   let g:ctrlp_user_command = 'rg "" %s'
-    \ . ' --files-with-matches'
-    \ . ' --smart-case'
     \ . ' --hidden'
     \ . ' --follow'
     \ . ' --no-ignore-vcs'
     \ . ' --no-ignore-parent'
+    \ . ' --files-with-matches'
+    \ . ' --smart-case'
     \ . ' --color=never '
     \ . ' --glob !.git/'
     \ . ' --glob !.tox/'
