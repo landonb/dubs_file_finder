@@ -222,7 +222,7 @@ call s:SetupCommandTPlainVim()
 "     https://github.com/junegunn/fzf.vim
 "   Which is wired by DepoXy:
 "     https://github.com/DepoXy/depoxy#🍯
-"       ~/.depoxy/ambers/home/.vim/pack/DepoXy/start/vim-depoxy/plugin/add-fzf-path.vim
+"       ~/.depoxy/ambers/home/.vim/pack/DepoXy/start/vim-depoxy/plugin/fzf-config.vim
 "   Whereas this script wires CtrlP and CommandT:
 "     https://github.com/ctrlpvim/ctrlp.vim
 "     https://github.com/wincent/command-t
@@ -427,7 +427,7 @@ call s:SetupCommandTBinding()
 "   And wires it to <Leader>F and a few other bindings using a
 "   DepoXy Vim plugin:
 "
-"     https://github.com/DepoXy/depoxy/blob/release/home/.vim/pack/DepoXy/start/vim-depoxy/plugin/add-fzf-path.vim
+"     https://github.com/DepoXy/depoxy/blob/release/home/.vim/pack/DepoXy/start/vim-depoxy/plugin/fzf-config.vim
 "
 "   - Found within the DepoXy project:
 "
@@ -435,7 +435,7 @@ call s:SetupCommandTBinding()
 "
 "   - Which you might have locally at:
 "
-"     ~/.depoxy/ambers/home/.vim/pack/DepoXy/start/vim-depoxy/plugin/add-fzf-path.vim
+"     ~/.depoxy/ambers/home/.vim/pack/DepoXy/start/vim-depoxy/plugin/fzf-config.vim
 "
 "   Note that CtrlP is written in 'pure Vimscript', whereas junegunn/fzf.vim
 "   runs a Go command. So if your vendor doesn't let you run Go on your

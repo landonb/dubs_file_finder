@@ -18,7 +18,7 @@ instead.
 
 - See also the `DepoXy
   <https://github.com/DepoXy/depoxy>`__ project's `vim-depoxy
-  <https://github.com/DepoXy/depoxy/blob/release/home/.vim/pack/DepoXy/start/vim-depoxy/plugin/add-fzf-path.vim>`__
+  <https://github.com/DepoXy/depoxy/blob/release/home/.vim/pack/DepoXy/start/vim-depoxy/plugin/fzf-config.vim>`__
   plugin, which shows how you might integrate ``junegunn/fzf.vim``
   into your environment (e.g., setting up the ``rg`` command
   and defining a few ``<Leader>`` maps).
