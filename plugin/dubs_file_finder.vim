@@ -453,11 +453,11 @@ set runtimepath+=~/.vim/pack/ctrlpvim/opt/ctrlp.vim
 
 function! s:SetCtrlPUserCommandRg()
   " SAVVY: Testing shows `rg` skip graphics formats: *.jpg, *.png, *.xcf
-  " USYNC: Similar rg --glob's:
-  "   ~/.depoxy/ambers/home/.projlns/infuse-projlns-core.sh
+  " USYNC: Similar rg --glob's (found locally at these paths within DepoXy environ):
+  "   ~/.depoxy/ambers/core/fzf-setup.sh
   "   ~/.kit/sh/home-fries/lib/alias/alias_rg_tag.sh
-  "   ~/.vim/pack/landonb/start/dubs_file_finder/plugin/dubs_file_finder.vim
   "   ~/.vim/pack/landonb/start/dubs_grep_steady/bin/vim-grepprg-rg-sort
+  "   ~/.vim/pack/landonb/opt/dubs_file_finder/plugin/dubs_file_finder.vim
   let g:ctrlp_user_command = 'rg "" %s'
     \ . ' --hidden'
     \ . ' --follow'
