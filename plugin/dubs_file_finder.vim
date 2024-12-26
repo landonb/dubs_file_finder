@@ -440,7 +440,7 @@ call s:SetupCommandTBinding()
 "   And wires it to <Leader>F and a few other bindings using a
 "   DepoXy Vim plugin:
 "
-"     https://github.com/DepoXy/depoxy/blob/release/home/.vim/pack/DepoXy/start/vim-depoxy/plugin/fzf-config.vim
+"     https://github.com/DepoXy/vim-depoxy/blob/release/plugin/fzf-config.vim
 "
 "   - Found within the DepoXy project:
 "
