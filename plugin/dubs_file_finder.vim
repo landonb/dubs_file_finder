@@ -31,10 +31,23 @@
 "   ~/.vim/pack/ctrlpvim/opt/ctrlp.vim
 "   ~/.vim/pack/wincent/opt/command-t
 
-if exists("g:plugin_dubs_file_finder") || &cp
+" -------------------------------------------------------------------
+
+" GUARD: Press <F9> to reload this plugin (or :source it).
+" - Via: https://github.com/embrace-vim/vim-source-reloader#↩️
+
+if expand('%:p') ==# expand('<sfile>:p')
+  unlet! g:plugin_dubs_file_finder
+endif
+
+if exists('g:plugin_dubs_file_finder') || &cp
+
   finish
 endif
+
 let g:plugin_dubs_file_finder = 1
+
+" -------------------------------------------------------------------
 
 " -------------------------------------------------------------------
 
