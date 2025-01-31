@@ -129,7 +129,7 @@ let g:plugin_dubs_file_finder = 1
 "   :h command-t-ruby
 
 function! s:SetupCommandTPlainVim()
-  " SPIKE: Demo in NeoVim.
+  " SPIKE: Demo in Neovim.
   " - Verify dot directories are scanned.
   if has('nvim')
     " Try the Lua tooling.
@@ -145,7 +145,7 @@ function! s:SetupCommandTPlainVim()
     return
   endif
 
-  " Command-T v6 is NeoVim-only Lua rewrite.
+  " Command-T v6 is Neovim-only Lua rewrite.
   " - Opt-in to previous Ruby implementation.
   let g:CommandTPreferredImplementation="ruby"
 
