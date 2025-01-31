@@ -147,6 +147,7 @@ function! s:SetupCommandTPlainVim()
 
   " Command-T v6 is Neovim-only Lua rewrite.
   " - Opt-in to previous Ruby implementation.
+  " MAYBE/2025-01-30: Demo v6 in Neovim (tho I'm V happy w/ junegunn's FZF).
   let g:CommandTPreferredImplementation="ruby"
 
   " Walk up directory from file's base and look for .git, etc,
