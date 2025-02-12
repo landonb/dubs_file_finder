@@ -1,6 +1,6 @@
 *dubs_file_finder.txt*	For Vim version 7.4.	Last change: 2015 Jan 23
 
-Just a Command-T Wrapper~
+Just a Command-T Wrapper ~
 
 COMMAND--ALL-THE-SOURCES--T				*dubs-file-finder*
 
@@ -19,7 +19,7 @@ Project page: https://github.com/landonb/dubs_file_finder
 
 Command-T: https://github.com/wincent/Command-T
 
-Install Command-T~
+Install Command-T ~
 `-----------------`
 
 From the terminal:
@@ -41,7 +41,7 @@ From the terminal:
 			whose file hierarchies you can fuzzily search
                         to locate and open files.
 
-The short of it~
+The short of it ~
 
 1. Find the `cmdt_paths` directory in your Vim folder.
 | It'll be under `dubs_file_finder`.
@@ -50,7 +50,7 @@ The short of it~
 
 3. Press `<Leader>t*`.
 
-The long of it~
+The long of it ~
 
 This script doesn't require you to enter a
 target directory when invoking the file finder.
