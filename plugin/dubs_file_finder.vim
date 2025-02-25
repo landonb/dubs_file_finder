@@ -275,8 +275,8 @@ function! s:DubsFileFindrLocateCmdtPaths()
     let l:ffdir = g:dubs_file_finder_cmdt_paths
   else
     " Check for known path first:
-    "   ~/.vim/pack/landonb/start/dubs_file_finder/cmdt_paths
-    let l:ffdir = $HOME . "/.vim/pack/landonb/start/dubs_file_finder/cmdt_paths"
+    "   ~/.vim/pack/landonb/dubs_file_finder/cmdt_paths
+    let l:ffdir = $HOME . "/.vim/pack/landonb/dubs_file_finder/cmdt_paths"
   endif
 
   " Note isdirectory returns true (1) if symlink to directory.
@@ -470,8 +470,8 @@ function! s:SetCtrlPUserCommandRg()
   " USYNC: Similar rg --glob's (found locally at these paths within DepoXy environ):
   "   ~/.depoxy/ambers/core/fzf-setup.sh
   "   ~/.kit/sh/home-fries/lib/alias/alias_rg_tag.sh
-  "   ~/.vim/pack/landonb/start/dubs_grep_steady/bin/vim-grepprg-rg-sort
-  "   ~/.vim/pack/landonb/opt/dubs_file_finder/plugin/dubs_file_finder.vim
+  "   ~/.vim/pack/landonb/dubs_grep_steady/bin/vim-grepprg-rg-sort
+  "   ~/.vim/pack/landonb/.whilom/dubs_file_finder/plugin/dubs_file_finder.vim
   let g:ctrlp_user_command = 'rg "" %s'
     \ . ' --hidden'
     \ . ' --follow'
